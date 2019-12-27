@@ -63,7 +63,9 @@ void MainWindow::on_actionNew_triggered(){
             // After creation, clear ui, make new tree
             ui->treeWidget->clear();
             QTreeWidgetItem *item = new QTreeWidgetItem(ui->treeWidget);
-            item->setText(0,"TEXT DUMMY HEA XD\nxD\n\nxDxD");
+            QStringList stli = ip.displayIpInfo();
+            QString text = "\n"+stli[0]+"\n"+stli[1]+"\n"+stli[2]+"\n"+stli[3]+"\n"+stli[4]+"\n"+stli[5]+"\n";
+            item->setText(0,text);
             ui->treeWidget->addTopLevelItem(item);
             ui->treeWidget->setHeaderLabel("");
         }
@@ -77,6 +79,36 @@ void MainWindow::on_actionNew_triggered(){
 
 void MainWindow::on_actionExit_triggered(){
     QCoreApplication::quit();
+}
+
+void MainWindow::on_actionSeparate_triggered(){
+    QStringList qstrli;
+    // OK clicked
+    bool ok;
+    // input string
+    QString inpstr = QInputDialog::getText(nullptr, "Separate", "Enter how much hosts each subnet has to contain: ",
+                                          QLineEdit::Normal, "", &ok);
+    if(ok){
+        if(inpstr.contains(',')){
+            qstrli = inpstr.split(',');
+        }
+        else if(inpstr.contains(' ')){
+            qstrli = inpstr.split(' ');
+        }
+        else if(inpstr.contains('.')||inpstr.contains('q')||inpstr.contains('w')||inpstr.contains('e')||inpstr.contains('r')
+                ||inpstr.contains('t')||inpstr.contains('y')||inpstr.contains('u')||inpstr.contains('i')||inpstr.contains('o')
+                ||inpstr.contains('p')){
+            QString str = "Failed to split input. Separators: ','/' '.";
+            ui->statusbar->showMessage(str,delayMS);
+            return;
+        }
+        else{
+            QString str = "Failed to split input. Separators: ','/' '.";
+            ui->statusbar->showMessage(str,delayMS);
+            return;
+        }
+        ip.splitNet2Subnets(qstrli);
+    }
 }
 
 /*

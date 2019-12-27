@@ -40,6 +40,8 @@
      <string>file</string>
     </property>
     <addaction name="actionNew"/>
+    <addaction name="actionSeparate"/>
+    <addaction name="actionAgregate"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -74,6 +76,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionSeparate"/>
+   <addaction name="actionAgregate"/>
    <addaction name="actionNew"/>
   </widget>
   <action name="actionNew">
@@ -98,6 +102,24 @@
    </property>
    <property name="toolTip">
     <string>Exit the program</string>
+   </property>
+  </action>
+  <action name="actionSeparate">
+   <property name="icon">
+    <iconset resource="source.qrc">
+     <normaloff>:/icons/img/iconfinder_Flow_block_131774.png</normaloff>:/icons/img/iconfinder_Flow_block_131774.png</iconset>
+   </property>
+   <property name="text">
+    <string>Separate to subnets</string>
+   </property>
+  </action>
+  <action name="actionAgregate">
+   <property name="icon">
+    <iconset resource="source.qrc">
+     <normaloff>:/icons/img/flow2.png</normaloff>:/icons/img/flow2.png</iconset>
+   </property>
+   <property name="text">
+    <string>Agregate subnets</string>
    </property>
   </action>
  </widget>

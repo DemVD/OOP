@@ -32,6 +32,8 @@ private slots:
     void on_actionNew_triggered();
     void on_actionExit_triggered();
 
+    void on_actionSeparate_triggered();
+
 private:
     Ui::MainWindow *ui;
     IpAdr ip;
